@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Helvetica | {% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="/site_media/style.css" type="text/css" />
+	<script type="text/javascript" src="/site_media/jquery.js"></script>
+	{% block external %}{% endblock %}
+</head>
+
+<body>
+    <div id="nav">
+        {% if user.is_authenticated %}
+            welcome <a href="/">{{ user.username }}</a>
+            (<a href="/logout/">logout</a>)
+        {% else %}
+            <a href="/login/">login</a> |
+            <a href="/register/">register</a>
+        {% endif %}
+    </div>
+        
+    <h1>{% block head %}{% endblock %}</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Helvetica{% endblock %}
+{% block head %}
+Welcome to Helvetica
+{% endblock %}
+{% block content %}
+    {% if user.username %}
+        <h2>Welcome <a href="/user/{{ user.username }}/">{{ user.username }}</a>!
+            Here you can play HELVETICA.</h2>
+        
+        {% if message %}
+            <p><strong>{{ message }}</strong></p>
+        {% endif %}
+        
+        {% if players %}
+            <h3>Your players:</h3>
+            {% for player in players %}
+                <ul>
+                    <li><p><a href="/players/{{ user.username }}/{{ player.player_name }}/"><strong>{{ player.player_name }}</strong></a></p></li>
+                </ul>
+            {% endfor %}
+        {% endif %}
+        <p><a href="/players/create/">Create new player</a></p>
+        
+    {% else %}
+        <h2>Welcome anonymous user!
+            You need to <a href="/login/">login</a>
+            before you can play HELVETICA.</h2>
+    {% endif %}
+{% endblock %}
+

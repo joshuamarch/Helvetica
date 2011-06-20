@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}
+
+    {% if new %} 
+        {{ player.player_name}} created successfully!
+    {% else %}
+        The lair of {{ player.player_name }}
+    {% endif %}
+
+{% endblock %}
+{% block head %}
+    <script type="text/javascript">
+        function deletechecked() 
+        {
+            var answer = confirm("Delete {{ player.player_name}}?")
+            if (answer){
+                document.messages.submit();
+            }
+    
+            return false;  
+        }
+    </script>
+    {% if new %} 
+        <h1>{{ player.player_name}} created successfully!</h1>
+    {% else %}
+        <h1>The lair of {{ player.player_name }}</h1>
+    {% endif %}
+        
+{% endblock %}
+{% block content %}
+    <h2>Welcome {{ user.username }}. This is the lair of your player {{ player.player_name }}.</h2>
+    <table border="1" class="attributes">
+        <tr>
+            <td><p><strong>Player name:</strong></p></td>
+            <td><p>{{ player.player_name }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Location:</strong></p></td>
+            <td><p>{{ player.location }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Strength</strong></p></td>
+            <td><p>{{ player.strength }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Luck</strong></p></td>
+            <td><p>{{ player.luck }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Constitution</strong></p></td>
+            <td><p>{{ player.constitution }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Speed</strong></p></td>
+            <td><p>{{ player.speed }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Health</strong></p></td>
+            <td><p>{{ player.health }} / {{ total_health }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Achievements</strong></p></td>
+            <td><p>{{ player.achievements }}</p></td>
+        </tr>
+    </table>
+    <a href="/play/{{ user.username }}/{{ player.player_name }}/"><button>Play with {{ player.player_name}}</button></a>
+    
+    <form method="post" action="." id="deletebutton" onclick="return deletechecked();">
+    {% csrf_token %}
+    <input type="submit" value="Delete {{ player.player_name}}" />
+    </form>
+    
+{% endblock %}
