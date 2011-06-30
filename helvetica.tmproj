@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>templates/players/player.html</string>
+	<string>templates/play.html</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -49,14 +49,28 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>dungeon/dictionary.py</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>51</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>dungeon/forms.py</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>59</integer>
+				<integer>40</integer>
 				<key>line</key>
-				<integer>45</integer>
+				<integer>24</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -68,9 +82,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>32</integer>
 				<key>line</key>
-				<integer>131</integer>
+				<integer>94</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -82,14 +96,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>37</integer>
+				<integer>41</integer>
 				<key>line</key>
-				<integer>32</integer>
+				<integer>23</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>22</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>41</integer>
+				<key>line</key>
+				<integer>23</integer>
+			</dict>
 		</dict>
 		<key>dungeon/monsters.py</key>
 		<dict>
@@ -110,14 +140,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>12</integer>
+				<integer>53</integer>
 				<key>line</key>
-				<integer>213</integer>
+				<integer>161</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>53</integer>
+			<integer>141</integer>
 		</dict>
 		<key>dungeon/tests.py</key>
 		<dict>
@@ -138,14 +168,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>69</integer>
+				<integer>44</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>162</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>129</integer>
 		</dict>
 		<key>manage.py</key>
 		<dict>
@@ -224,30 +254,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>7</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>63</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>14</integer>
-			</dict>
 		</dict>
 		<key>templates/players/create_player.html</key>
 		<dict>
@@ -284,14 +298,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>12</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>64</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>26</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>64</integer>
+			</dict>
 		</dict>
 		<key>templates/registration/login.html</key>
 		<dict>
@@ -387,6 +417,7 @@
 		<string>dungeon/models.py</string>
 		<string>dungeon/views.py</string>
 		<string>dungeon/rooms.py</string>
+		<string>dungeon/dictionary.py</string>
 		<string>dungeon/monsters.py</string>
 		<string>dungeon/lexicon.py</string>
 		<string>templates/base.html</string>
@@ -403,6 +434,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{467, 6}, {881, 872}}</string>
+	<string>{{360, 6}, {881, 872}}</string>
 </dict>
 </plist>

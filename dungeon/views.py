@@ -157,10 +157,17 @@ def play(request, username, player_name):
     
     player.save()
     
+    inventory = player.inventory
+    listinventory = inventory.split()
+    
+    total_health = 100 + player.constitution
+    
     variables = RequestContext(request, {
         'text': text,
         'player': player,
         'form': form,
+        'inventory': listinventory,
+        'total_health': total_health
     })
     
     return render_to_response(

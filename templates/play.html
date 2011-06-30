@@ -13,4 +13,53 @@
     </div>
     <input type="submit" value="submit" />
 </form>
+
+<div id="inventory">
+    <table>
+        <tr>
+            <td><p><strong>Inventory</strong></p></td>
+        </tr>
+        {% for item in inventory %}
+        <tr>
+            <td><p>{{item}}</p></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div id="attributes">
+    <table border="1" class="attributes">
+        <tr>
+            <td><p><strong>Player name:</strong></p></td>
+            <td><p>{{ player.player_name }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Location:</strong></p></td>
+            <td><p>{{ player.location }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Strength</strong></p></td>
+            <td><p>{{ player.strength }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Luck</strong></p></td>
+            <td><p>{{ player.luck }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Constitution</strong></p></td>
+            <td><p>{{ player.constitution }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Speed</strong></p></td>
+            <td><p>{{ player.speed }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Health</strong></p></td>
+            <td><p>{{ player.health }} / {{ total_health }}</p></td>
+        </tr>
+        <tr>
+            <td><p><strong>Achievements</strong></p></td>
+            <td><p>{{ player.achievements }}</p></td>
+        </tr>
+    </table>
+</div>
 {% endblock %}

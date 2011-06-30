@@ -1,5 +1,6 @@
 from random import randint
 from monsters import *
+import dictionary
 
 def rooms(player, room):
         if room == "Armoury":
@@ -67,14 +68,14 @@ class Entrance(Room):
         
         
     def actions(self, sentence):    
-        if sentence.verb == 'go':
-            self.player = self.navigate(sentence.object)
-            return
+        if sentence.verb in dictionary.navigate:
+            return self.navigate(sentence.object)
+            
         
         elif sentence.object == 'torch':
             if sentence.verb == 'look':
                 return "It's a wooden torch, burning at one end."
-            elif sentence.verb == 'pickup' or sentence.verb == 'grab' or sentence.verb == 'pick':
+            elif sentence.verb in dictionary.pickup:
                 self.player.add_item("torch")
                 return "You picked up the torch"
             else:
@@ -97,12 +98,14 @@ class Armoury(Room):
         
         
         if "torch" in self.player.inventory and "sword" in self.player.inventory:
-            self.enter_text =   "You enter a room shimmering with silver and golden armour!\n" + \
-                                "There are lots of trinkets and metal items all over the floor."
+            self.enter_text =   "You are in a room shimmering with silver and golden armour!\n" + \
+                                "There are lots of trinkets and metal items all over the floor.\n" + \
+                                "There is a door to the East."
                                 
         elif "torch" in self.player.inventory:
-            self.enter_text =   "You enter a room shimmering with silver and golden armour!\n" + \
-                                "There is a sword on the wall, and lots of trinkets and metal items all over the floor."
+            self.enter_text =   "You are in a room shimmering with silver and golden armour!\n" + \
+                                "There is a sword on the wall, and lots of trinkets and metal items all over the floor.\n" + \
+                                "There is a door to the East."
                                 
         else:
             self.enter_text =   "You walk through the door into a dark room. \n" + \
@@ -113,9 +116,8 @@ class Armoury(Room):
         
             
     def actions(self, sentence):
-        if sentence.verb == 'go':
-            self.player = self.navigate(sentence.object)
-            return
+        if sentence.verb in dictionary.navigate:
+            return self.navigate(sentence.object)
         
         elif sentence.verb == 'look' or sentence.verb == 'search':
             
@@ -134,7 +136,7 @@ class Armoury(Room):
             else:
                 return self.enter_text
         
-        elif sentence.object == 'sword':
+        elif sentence.verb in dictionary.pickup and sentence.object == 'sword':
             self.player.add_item("sword")
             return "You take the sword - it could come in handy later!"
         
@@ -149,32 +151,38 @@ class DarkPassage(Room):
     def __init__(self, player):
         
         self.player = player
-        self.nouns = ["door"]
+        self.nouns = ["door", "mirror"]
         
         
         if "Dark_Passage_Door_Unlocked" in self.player.achievements:
             self.paths = { "west": "Entrance",
                         "east": "MirrorRoom"}
+            if "torch" in self.player.inventory:
+                self.enter_text =   "You are in a long dark passage running east from the Entrance Hall\n" + \
+                                    "to a small open door in the West, just visible in the faint torchlight."                 
+            else:
+                self.enter_text =   "You walk through the door into a dark passage.\n" + \
+                                    "Maybe you would see more if you had a torch?"
         else:
             self.paths = { "west": "Entrance" }
+            if "torch" in self.player.inventory:
+                self.enter_text =   "You are in a long dark passage running east from the Entrance Hall\n" + \
+                                    "to a small door in the West, just visible in the faint torchlight."                 
+            else:
+                self.enter_text =   "You are in a dark passage.\n" + \
+                                    "Maybe you would see more if you had a torch?"
         
         
         self.location = "DarkPassage"
         
-        if "torch" in self.player.inventory:
-            self.enter_text =   "You walk through the door into a long dark passage continuing east.\n" + \
-                                "In the faint torchlight you see a small door at the end."
-                                
-        else:
-            self.enter_text =   "You walk through the door into a dark passage.\n" + \
-                                "Maybe you would see more if you had a torch?"
+        
+        
                                 
         
     
     def actions(self, sentence):        
-        if sentence.verb == 'go':
-            self.player = self.navigate(sentence.object)
-            return
+        if sentence.verb in dictionary.navigate:
+            return self.navigate(sentence.object)
         
         elif sentence.object == 'door':
             
@@ -190,7 +198,10 @@ class DarkPassage(Room):
                     return "The door is locked. Maybe you could find a key?"
         
         elif sentence.verb == 'look':
-            return self.enter_text
+            if sentence.object == 'mirror':
+                return "Your reflection stares back at you... then growls and snarls at you!"
+            else:
+                return self.enter_text
             
         else:
             return "Say again?"
@@ -221,12 +232,11 @@ class MirrorRoom(Room):
     
     def actions(self, sentence):  
         if sentence.verb == 'go':
-            self.player = self.navigate(sentence.object)
-            return
+            return self.navigate(sentence.object)
         
         elif sentence.object == 'monster':
             
-            if sentence.verb == "attack" or sentence.verb == "kill":
+            if sentence.verb in dictionary.attack:
                 if sentence.item == 'sword':
                     if "sword" in self.player.inventory:
                         text = self.mirror_monster.attack(self.player, "sword")

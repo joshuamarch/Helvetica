@@ -4,7 +4,7 @@ class Lexicon(object):
     
     def __init__(self):
         self.directions = ["north", "south", "east", "west"]
-        self.verbs = ["go", "kill", "eat", "pick", "pickup", "grab", "look", "search", "open", "attack"]
+        self.verbs = ["walk", "go", "kill", "eat", "pick", "pickup", "grab", "look", "search", "open", "attack"]
         self.stops = ["the", "in", "of"]
         self.nouns = ["bear", "princess", "door", "sword", "key", "torch"]
         self.joins = ["with"]
